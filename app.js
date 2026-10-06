@@ -139,6 +139,12 @@ class StarnestPlannerApp {
       this.inpUserEmail.value = savedEmail;
     }
 
+    // Mobile Page Flip & Swipe Elements
+    this.dailyPageContainer = document.getElementById("dailyPageContainer");
+    this.btnFlipPrev = document.getElementById("btnFlipPrev");
+    this.btnFlipNext = document.getElementById("btnFlipNext");
+    this.dayFlipBar = document.getElementById("dayFlipBar");
+
     // Update reminder toggle button state
     if (this.btnReminderToggle) {
       if (this.remindersEnabled) {
@@ -511,6 +517,17 @@ class StarnestPlannerApp {
         }
       });
     }
+
+    // Quick Day Flip Buttons
+    if (this.btnFlipPrev) {
+      this.btnFlipPrev.addEventListener("click", () => this.flipDay(-1));
+    }
+    if (this.btnFlipNext) {
+      this.btnFlipNext.addEventListener("click", () => this.flipDay(1));
+    }
+
+    // Initialize Mobile Touch & Swipe Gestures
+    this.setupSwipeNavigation();
   }
 
   async handleGasSync(gasUrl) {
@@ -568,6 +585,130 @@ class StarnestPlannerApp {
     if (activePill) {
       activePill.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     }
+  }
+
+  // ==========================================
+  // MOBILE PAGE FLIP & SWIPE GESTURE ENGINE
+  // ==========================================
+  flipDay(direction) {
+    const container = this.dailyPageContainer;
+    const parts = this.selectedDate.split("-");
+    const currentDay = parseInt(parts[2], 10);
+    const targetDay = currentDay + direction;
+
+    if (targetDay < 1 || targetDay > 31) {
+      this.showToast(targetDay < 1 ? "Đang ở ngày đầu tiên của tháng! 🌸" : "Đang ở ngày cuối cùng của tháng! 🌸", "📅", 1800);
+      return;
+    }
+
+    // Trigger subtle haptic on mobile if supported
+    if ("vibrate" in navigator) {
+      try { navigator.vibrate(12); } catch (e) {}
+    }
+
+    if (!container) {
+      this.shiftSelectedDay(direction);
+      return;
+    }
+
+    // Smooth page flip 3D animation
+    const exitClass = direction > 0 ? "flip-out-left" : "flip-out-right";
+    const enterClass = direction > 0 ? "flip-in-right" : "flip-in-left";
+
+    container.classList.add(exitClass);
+
+    setTimeout(() => {
+      this.shiftSelectedDay(direction);
+      container.classList.remove(exitClass);
+      container.classList.add(enterClass);
+
+      setTimeout(() => {
+        container.classList.remove(enterClass);
+      }, 340);
+    }, 140);
+  }
+
+  setupSwipeNavigation() {
+    const target = this.dailyPageContainer || document.getElementById("tab-daily");
+    if (!target) return;
+
+    let startX = 0;
+    let startY = 0;
+    let startTime = 0;
+    let isSwiping = false;
+
+    // Mobile touch events
+    target.addEventListener("touchstart", (e) => {
+      if (e.touches.length !== 1) return;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      startTime = Date.now();
+      isSwiping = true;
+    }, { passive: true });
+
+    target.addEventListener("touchmove", (e) => {
+      if (!isSwiping || e.touches.length !== 1) return;
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
+      const diffX = currentX - startX;
+      const diffY = currentY - startY;
+
+      // Tactile page drag feedback
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 15) {
+        const clamped = Math.max(-50, Math.min(50, diffX * 0.3));
+        target.style.transform = `translateX(${clamped}px) rotateY(${clamped * -0.08}deg)`;
+      }
+    }, { passive: true });
+
+    target.addEventListener("touchend", (e) => {
+      if (!isSwiping) return;
+      isSwiping = false;
+      target.style.transform = "";
+
+      const endX = e.changedTouches[0].clientX;
+      const endY = e.changedTouches[0].clientY;
+      const diffX = endX - startX;
+      const diffY = endY - startY;
+      const duration = Date.now() - startTime;
+
+      // Deliberate swipe: horizontal > 40px and within 500ms
+      if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY) * 1.2 && duration < 500) {
+        if (diffX < 0) {
+          this.flipDay(1); // Swipe Left -> Next day
+        } else {
+          this.flipDay(-1); // Swipe Right -> Prev day
+        }
+      }
+    }, { passive: true });
+
+    // Desktop mouse drag fallback
+    let isMouseDragging = false;
+    let mouseStartX = 0;
+    let mouseStartY = 0;
+
+    target.addEventListener("mousedown", (e) => {
+      if (e.target.closest("button") || e.target.closest("input") || e.target.closest("select") || e.target.closest(".task-card")) return;
+      isMouseDragging = true;
+      mouseStartX = e.clientX;
+      mouseStartY = e.clientY;
+    });
+
+    document.addEventListener("mouseup", (e) => {
+      if (!isMouseDragging) return;
+      isMouseDragging = false;
+      target.style.transform = "";
+
+      const diffX = e.clientX - mouseStartX;
+      const diffY = e.clientY - mouseStartY;
+
+      if (Math.abs(diffX) > 55 && Math.abs(diffX) > Math.abs(diffY) * 1.3) {
+        if (diffX < 0) {
+          this.flipDay(1);
+        } else {
+          this.flipDay(-1);
+        }
+      }
+    });
   }
 
   renderAll() {

@@ -25,7 +25,8 @@ def sync_to_nas():
         "server.py",
         "google_apps_script.js",
         "Dockerfile",
-        "docker-compose.yml"
+        "docker-compose.yml",
+        "email_reminder_service.py"
     ]
 
     for fname in files_to_sync:

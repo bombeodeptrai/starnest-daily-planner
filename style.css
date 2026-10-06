@@ -1342,3 +1342,274 @@ body {
   align-items: center;
   gap: 2px;
 }
+
+/* ==========================================================
+   PAGE FLIP & SWIPE GESTURE TRANSITIONS
+   ========================================================== */
+.day-flip-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  background: var(--bg-card);
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  user-select: none;
+}
+
+.btn-flip-day {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: var(--primary);
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-flip-day:hover {
+  background: var(--primary-gradient);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-1px);
+}
+
+.btn-flip-day:active {
+  transform: scale(0.94);
+}
+
+.swipe-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.swipe-icon {
+  font-size: 14px;
+  display: inline-block;
+  animation: bookBounce 2s infinite ease-in-out;
+}
+
+@keyframes bookBounce {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-10deg) scale(1.15); }
+}
+
+.daily-page-container {
+  transform-origin: center center;
+  transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.25s ease;
+  will-change: transform, opacity;
+  touch-action: pan-y;
+}
+
+/* Page flip 3D animation classes */
+.daily-page-container.flip-out-left {
+  transform: translateX(-60px) rotateY(-12deg) scale(0.95);
+  opacity: 0;
+}
+
+.daily-page-container.flip-in-right {
+  animation: pageFlipInRight 0.32s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.daily-page-container.flip-out-right {
+  transform: translateX(60px) rotateY(12deg) scale(0.95);
+  opacity: 0;
+}
+
+.daily-page-container.flip-in-left {
+  animation: pageFlipInLeft 0.32s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes pageFlipInRight {
+  from {
+    transform: translateX(65px) rotateY(14deg) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pageFlipInLeft {
+  from {
+    transform: translateX(-65px) rotateY(-14deg) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ==========================================================
+   MOBILE RESPONSIVE OPTIMIZATION (< 600px)
+   ========================================================== */
+@media (max-width: 600px) {
+  body {
+    background-color: var(--bg-card);
+  }
+
+  .planner-app {
+    box-shadow: none;
+    max-width: 100%;
+    min-height: 100vh;
+  }
+
+  .planner-header {
+    padding: 12px 14px 6px 14px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .brand-group {
+    width: 100%;
+  }
+
+  .header-actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .header-actions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header-actions button,
+  .theme-dropdown .btn-theme-toggle {
+    flex-shrink: 0;
+    font-size: 11px;
+    padding: 6px 10px;
+    white-space: nowrap;
+  }
+
+  .month-nav-bar {
+    margin-bottom: 8px;
+  }
+
+  .current-month-label {
+    font-size: 14px;
+  }
+
+  /* Date strip */
+  .date-strip-container {
+    margin-bottom: 8px;
+  }
+
+  .day-pill {
+    width: 46px;
+    padding: 8px 4px;
+  }
+
+  .day-pill .pill-date {
+    font-size: 15px;
+  }
+
+  /* Sticky Bottom Navigation like a native mobile app */
+  .planner-tabs {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    border-radius: 18px 18px 0 0;
+    background: var(--bg-card);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) 12px;
+    z-index: 150;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .tab-btn {
+    font-size: 12px;
+    padding: 8px 6px;
+  }
+
+  /* Floating Action Button (+ Add Task) */
+  .fab-add-task {
+    bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+    right: 18px;
+    width: 52px;
+    height: 52px;
+    font-size: 26px;
+    z-index: 160;
+  }
+
+  /* Planner Main Container with safe bottom padding */
+  .planner-main {
+    padding: 12px 14px calc(95px + env(safe-area-inset-bottom, 0px)) 14px;
+  }
+
+  .widgets-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .widget-card {
+    padding: 12px 14px;
+  }
+
+  /* Task cards comfortable touch targets */
+  .task-card {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .task-title {
+    font-size: 13px;
+  }
+
+  .task-time, .task-tag, .task-priority {
+    font-size: 10px;
+  }
+
+  .btn-check-task {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .task-actions button {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  /* Toast & Reminder Alert */
+  .toast-popup {
+    bottom: calc(75px + env(safe-area-inset-bottom, 0px));
+    width: 90%;
+    max-width: 340px;
+  }
+
+  .reminder-alert-card {
+    top: 12px;
+    width: 94%;
+    padding: 12px 14px;
+  }
+}
