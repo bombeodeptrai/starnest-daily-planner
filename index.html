@@ -39,6 +39,11 @@
             ⚙️ <span class="routine-text">Lịch Mẫu</span>
           </button>
 
+          <!-- Reminder Alarm Toggle Button -->
+          <button class="btn-reminder-toggle" id="btnReminderToggle" title="Bật/Tắt chuông nhắc hẹn công việc">
+            🔔 <span class="reminder-text">Nhắc Lịch</span>
+          </button>
+
           <!-- Theme Picker Dropdown -->
           <div class="theme-dropdown">
             <button class="btn-theme-toggle" id="btnThemeToggle" title="Đổi giao diện">
@@ -329,9 +334,20 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label>Ghi chú thêm</label>
-            <input type="text" id="inpNotes" placeholder="Nhắc nhở hoặc lời dặn cho bản thân...">
+          <div class="form-row">
+            <div class="form-group col-half">
+              <label>🔔 Báo thức / Nhắc lịch</label>
+              <select id="inpReminder">
+                <option value="at_time">⏰ Đúng giờ bắt đầu</option>
+                <option value="before_5m">⏰ Trước 5 phút</option>
+                <option value="before_15m">⏰ Trước 15 phút</option>
+                <option value="none">🔕 Không nhắc</option>
+              </select>
+            </div>
+            <div class="form-group col-half">
+              <label>Ghi chú thêm</label>
+              <input type="text" id="inpNotes" placeholder="Nhắc nhở hoặc lời dặn cho bản thân...">
+            </div>
           </div>
 
           <div class="modal-actions">
@@ -370,6 +386,16 @@
           <button type="button" class="btn-submit" id="btnApplyRoutinesAllMonth">🚀 Áp Dụng Cho Cả Tháng 10</button>
         </div>
       </div>
+    </div>
+
+    <!-- REMINDER ALARM NOTIFICATION BANNER -->
+    <div class="reminder-alert-card" id="reminderAlertCard">
+      <div class="reminder-alert-icon">⏰</div>
+      <div class="reminder-alert-info">
+        <h4 id="reminderAlertTitle">Đã đến giờ công việc!</h4>
+        <p id="reminderAlertTime">08:00 - 09:00</p>
+      </div>
+      <button class="btn-reminder-ack" id="btnReminderAck">Đã hiểu ✨</button>
     </div>
 
     <!-- TOAST NOTIFICATION -->

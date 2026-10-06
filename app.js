@@ -29,6 +29,10 @@ class StarnestPlannerApp {
     this.currentTheme = localStorage.getItem("planner_theme") || "theme-pastel-pink";
     this.originalEditTitle = "";
 
+    // Schedule Reminders (Nhắc lịch)
+    this.remindersEnabled = localStorage.getItem("planner_reminders_enabled") !== "false";
+    this.triggeredReminders = new Set();
+
     // Default daily routine templates (lặp lại mỗi ngày)
     this.defaultRoutines = JSON.parse(localStorage.getItem("planner_default_routines") || "null") || [
       { title: "Uống 500ml nước ấm & Khởi động", session: "🌅 Buổi Sáng", start: "06:00", end: "06:30", category: "🧘 Sức khỏe", priority: "⭐⭐⭐ Cao" },
@@ -43,6 +47,7 @@ class StarnestPlannerApp {
     this.applyTheme(this.currentTheme);
     this.bindEvents();
     this.loadData();
+    this.startReminderChecker();
   }
 
   initElements() {
@@ -54,6 +59,7 @@ class StarnestPlannerApp {
     // Header & Navigation
     this.btnSyncGsheet = document.getElementById("btnSyncGsheet");
     this.btnRoutineTemplates = document.getElementById("btnRoutineTemplates");
+    this.btnReminderToggle = document.getElementById("btnReminderToggle");
     this.prevMonthBtn = document.getElementById("prevMonthBtn");
     this.nextMonthBtn = document.getElementById("nextMonthBtn");
     this.currentMonthLabel = document.getElementById("currentMonthLabel");
@@ -104,6 +110,7 @@ class StarnestPlannerApp {
     this.inpPriority = document.getElementById("inpPriority");
     this.inpCategory = document.getElementById("inpCategory");
     this.inpNotes = document.getElementById("inpNotes");
+    this.inpReminder = document.getElementById("inpReminder");
 
     // Routine Templates Modal Elements
     this.modalRoutineTemplates = document.getElementById("modalRoutineTemplates");
@@ -112,6 +119,21 @@ class StarnestPlannerApp {
     this.routineListContainer = document.getElementById("routineListContainer");
     this.btnAddRoutineItem = document.getElementById("btnAddRoutineItem");
     this.btnApplyRoutinesAllMonth = document.getElementById("btnApplyRoutinesAllMonth");
+
+    // Reminder Alarm Banner Elements
+    this.reminderAlertCard = document.getElementById("reminderAlertCard");
+    this.reminderAlertTitle = document.getElementById("reminderAlertTitle");
+    this.reminderAlertTime = document.getElementById("reminderAlertTime");
+    this.btnReminderAck = document.getElementById("btnReminderAck");
+
+    // Update reminder toggle button state
+    if (this.btnReminderToggle) {
+      if (this.remindersEnabled) {
+        this.btnReminderToggle.classList.add("active");
+      } else {
+        this.btnReminderToggle.classList.remove("active");
+      }
+    }
 
     // Toast
     this.toastPopup = document.getElementById("toastPopup");
@@ -146,8 +168,8 @@ class StarnestPlannerApp {
   }
 
   async loadData() {
-    // Only fetch /api/tasks if running locally or on custom backend server
-    const isLocalBackend = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+    // Only fetch /api/tasks if running on custom backend server (port 8089)
+    const isLocalBackend = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") && window.location.port === "8089";
 
     if (isLocalBackend) {
       try {
@@ -379,6 +401,36 @@ class StarnestPlannerApp {
         this.applyRoutinesToAllMonth();
       });
     }
+
+    // Reminder Alarm Toggle Button Event
+    if (this.btnReminderToggle) {
+      this.btnReminderToggle.addEventListener("click", () => {
+        this.remindersEnabled = !this.remindersEnabled;
+        localStorage.setItem("planner_reminders_enabled", this.remindersEnabled ? "true" : "false");
+        if (this.remindersEnabled) {
+          this.btnReminderToggle.classList.add("active");
+          this.playChimeSound();
+          if ("Notification" in window && Notification.permission !== "granted") {
+            Notification.requestPermission();
+          }
+          this.showToast("Đã BẬT chuông nhắc hẹn công việc! 🔔✨", "🔔", 3000);
+          this.checkUpcomingReminders();
+        } else {
+          this.btnReminderToggle.classList.remove("active");
+          if (this.reminderAlertCard) this.reminderAlertCard.classList.remove("show");
+          this.showToast("Đã TẮT chuông nhắc hẹn! 🔕", "🔕", 2500);
+        }
+      });
+    }
+
+    // Reminder Alarm Dismiss / Acknowledge Button
+    if (this.btnReminderAck) {
+      this.btnReminderAck.addEventListener("click", () => {
+        if (this.reminderAlertCard) {
+          this.reminderAlertCard.classList.remove("show");
+        }
+      });
+    }
   }
 
   async handleGasSync(gasUrl) {
@@ -540,6 +592,8 @@ class StarnestPlannerApp {
     container.innerHTML = "";
     taskList.forEach(task => {
       const isDone = task.Checklist_Done === true || task.Checklist_Done === "true";
+      const hasReminder = (!task.Reminder || task.Reminder !== "none");
+      const reminderBadge = hasReminder ? `<span class="task-reminder-badge" title="Có báo thức nhắc việc">🔔</span>` : "";
       const card = document.createElement("div");
       card.className = `task-card ${isDone ? "completed" : ""}`;
       card.dataset.id = task.ID;
@@ -554,6 +608,7 @@ class StarnestPlannerApp {
             <span class="task-time">⏰ ${escapeHtml(task.Start_Time || "")} - ${escapeHtml(task.End_Time || "")}</span>
             <span class="task-tag">${escapeHtml(task.Category || "Chung")}</span>
             <span class="task-priority">${escapeHtml(task.Priority || "⭐⭐")}</span>
+            ${reminderBadge}
           </div>
         </div>
         <div class="task-actions">
@@ -659,6 +714,7 @@ class StarnestPlannerApp {
     this.inpDate.value = this.selectedDate;
     this.inpTitle.value = "";
     this.inpNotes.value = "";
+    if (this.inpReminder) this.inpReminder.value = "at_time";
     this.modalBackdrop.classList.add("show");
     setTimeout(() => {
       if (this.inpTitle) this.inpTitle.focus();
@@ -682,6 +738,7 @@ class StarnestPlannerApp {
     this.inpPriority.value = task.Priority || "⭐⭐⭐ Cao";
     this.inpCategory.value = task.Category || "💼 Công việc";
     this.inpNotes.value = task.Notes || "";
+    if (this.inpReminder) this.inpReminder.value = task.Reminder || "at_time";
 
     const singleRadio = document.querySelector('input[name="editScope"][value="single"]');
     if (singleRadio) singleRadio.checked = true;
@@ -724,6 +781,7 @@ class StarnestPlannerApp {
             t.Session = this.inpSession.value;
             t.Priority = this.inpPriority.value;
             t.Category = this.inpCategory.value;
+            if (this.inpReminder) t.Reminder = this.inpReminder.value;
             if (this.inpNotes.value.trim()) t.Notes = this.inpNotes.value.trim();
             updatedCount++;
           }
@@ -752,6 +810,7 @@ class StarnestPlannerApp {
           task.Day_Of_Week = dow;
           task.Priority = this.inpPriority.value;
           task.Category = this.inpCategory.value;
+          if (this.inpReminder) task.Reminder = this.inpReminder.value;
           task.Notes = this.inpNotes.value.trim();
         }
         this.showToast("Đã cập nhật công việc thành công! ✨", "✏️");
@@ -767,6 +826,7 @@ class StarnestPlannerApp {
         day_of_week: dow,
         priority: this.inpPriority.value,
         category: this.inpCategory.value,
+        reminder: this.inpReminder ? this.inpReminder.value : "at_time",
         notes: this.inpNotes.value.trim()
       };
 
@@ -782,6 +842,7 @@ class StarnestPlannerApp {
         Checklist_Done: false,
         Priority: taskPayload.priority,
         Category: taskPayload.category,
+        Reminder: taskPayload.reminder,
         Notes: taskPayload.notes
       };
 
@@ -995,6 +1056,109 @@ class StarnestPlannerApp {
         cup.classList.add("active");
       } else {
         cup.classList.remove("active");
+      }
+    });
+  }
+
+  // ==========================================
+  // SCHEDULE REMINDERS & CHIME ALARM
+  // ==========================================
+  playChimeSound() {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6 (Cute sparkle chime)
+      notes.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.12);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime + idx * 0.12);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.12 + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + idx * 0.12);
+        osc.stop(ctx.currentTime + idx * 0.12 + 0.35);
+      });
+    } catch (e) {
+      console.warn("Audio chime error:", e);
+    }
+  }
+
+  triggerReminderAlarm(task) {
+    this.playChimeSound();
+
+    if (this.reminderAlertCard) {
+      if (this.reminderAlertTitle) {
+        this.reminderAlertTitle.textContent = `⏰ Nhắc việc: ${task.Title}`;
+      }
+      if (this.reminderAlertTime) {
+        this.reminderAlertTime.textContent = `Giờ làm: ${task.Start_Time || ""} - ${task.End_Time || ""} (${task.Priority || ""})`;
+      }
+      this.reminderAlertCard.classList.add("show");
+    }
+
+    if ("Notification" in window && Notification.permission === "granted") {
+      try {
+        new Notification(`⏰ Nhắc lịch: ${task.Title}`, {
+          body: `Thời gian: ${task.Start_Time || ""} - ${task.End_Time || ""}\nMức ưu tiên: ${task.Priority || ""}`,
+          icon: "favicon.ico"
+        });
+      } catch (e) {
+        console.warn("Notification error:", e);
+      }
+    }
+  }
+
+  startReminderChecker() {
+    // Check every 30 seconds
+    setInterval(() => {
+      this.checkUpcomingReminders();
+    }, 30000);
+
+    // Initial check after 2 seconds
+    setTimeout(() => {
+      this.checkUpcomingReminders();
+    }, 2000);
+  }
+
+  checkUpcomingReminders() {
+    if (!this.remindersEnabled || !this.tasks || this.tasks.length === 0) return;
+
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = String(now.getMonth() + 1).padStart(2, '0');
+    const currentDay = String(now.getDate()).padStart(2, '0');
+    const todayStr = `${currentYear}-${currentMonth}-${currentDay}`;
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+    this.tasks.forEach(task => {
+      // Check tasks matching today or selected date if in active preview
+      if (task.Date !== todayStr && task.Date !== this.selectedDate) return;
+      const isDone = task.Checklist_Done === true || task.Checklist_Done === "true";
+      if (isDone) return;
+
+      const reminderType = task.Reminder || "at_time";
+      if (reminderType === "none") return;
+
+      if (!task.Start_Time) return;
+      const timeParts = task.Start_Time.split(":");
+      const h = parseInt(timeParts[0], 10);
+      const m = parseInt(timeParts[1], 10);
+      if (isNaN(h) || isNaN(m)) return;
+
+      const taskMinutes = h * 60 + m;
+      let triggerMinutes = taskMinutes;
+      if (reminderType === "before_5m") triggerMinutes -= 5;
+      if (reminderType === "before_15m") triggerMinutes -= 15;
+
+      const reminderKey = `${task.ID}_${task.Date}_${triggerMinutes}`;
+      if (!this.triggeredReminders.has(reminderKey)) {
+        if (currentMinutes >= triggerMinutes && currentMinutes <= triggerMinutes + 5) {
+          this.triggeredReminders.add(reminderKey);
+          this.triggerReminderAlarm(task);
+        }
       }
     });
   }
