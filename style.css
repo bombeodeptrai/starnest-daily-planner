@@ -234,6 +234,28 @@ body {
   position: relative;
 }
 
+.btn-routine-templates {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-card-sub);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 7px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-routine-templates:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
 .btn-theme-toggle {
   background: var(--bg-card-sub);
   border: 1px solid var(--border-color);
@@ -772,6 +794,25 @@ body {
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.btn-task-edit {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  opacity: 0.6;
+  transition: var(--transition);
+}
+
+.btn-task-edit:hover {
+  opacity: 1;
+  color: var(--primary);
+  background: var(--primary-soft);
+  transform: scale(1.15);
 }
 
 .btn-task-del {

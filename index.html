@@ -34,6 +34,11 @@
             <span class="sync-text">Lưu về Google Sheet</span>
           </button>
 
+          <!-- Routine Templates Manager Button -->
+          <button class="btn-routine-templates" id="btnRoutineTemplates" title="Quản lý việc mặc định lặp lại">
+            ⚙️ <span class="routine-text">Lịch Mẫu</span>
+          </button>
+
           <!-- Theme Picker Dropdown -->
           <div class="theme-dropdown">
             <button class="btn-theme-toggle" id="btnThemeToggle" title="Đổi giao diện">
@@ -246,18 +251,19 @@
       <span class="fab-pulse"></span>
     </button>
 
-    <!-- MODAL: THÊM CÔNG VIỆC MỚI -->
+    <!-- MODAL: THÊM / CHỈNH SỬA CÔNG VIỆC -->
     <div class="modal-backdrop" id="modalBackdrop">
       <div class="modal-card">
         <div class="modal-header">
           <div class="modal-title-box">
-            <span class="modal-badge-icon">🌸</span>
-            <h3>Thêm Kế Hoạch Mới</h3>
+            <span class="modal-badge-icon" id="modalBadgeIcon">🌸</span>
+            <h3 id="modalTitleText">Thêm Kế Hoạch Mới</h3>
           </div>
           <button class="btn-close-modal" id="btnCloseModal">✕</button>
         </div>
         
         <form id="addPlanForm" class="modal-form">
+          <input type="hidden" id="inpEditTaskId" value="">
           <div class="form-group">
             <label>Tên công việc / Kế hoạch *</label>
             <input type="text" id="inpTitle" placeholder="Ví dụ: Uống nước ấm & Khởi động..." required>
@@ -310,6 +316,19 @@
             </div>
           </div>
 
+          <!-- PHẠM VI ÁP DỤNG KHI SỬA -->
+          <div class="form-group" id="editScopeGroup" style="display: none; background: var(--bg-card-sub); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px dashed var(--border-color); margin-bottom: 14px;">
+            <label style="font-weight: 800; color: var(--primary); margin-bottom: 6px;">⚙️ Phạm vi cập nhật:</label>
+            <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13px;">
+              <label style="font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                <input type="radio" name="editScope" value="single" checked> Chỉ sửa riêng cho ngày này
+              </label>
+              <label style="font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                <input type="radio" name="editScope" value="all"> Đổi tên & giờ cho TẤT CẢ các ngày trong tháng (Lịch mẫu)
+              </label>
+            </div>
+          </div>
+
           <div class="form-group">
             <label>Ghi chú thêm</label>
             <input type="text" id="inpNotes" placeholder="Nhắc nhở hoặc lời dặn cho bản thân...">
@@ -317,9 +336,39 @@
 
           <div class="modal-actions">
             <button type="button" class="btn-cancel" id="btnCancelModal">Hủy bỏ</button>
-            <button type="submit" class="btn-submit">💖 Lưu Kế Hoạch</button>
+            <button type="submit" class="btn-submit" id="btnSubmitModal">💖 Lưu Kế Hoạch</button>
           </div>
         </form>
+      </div>
+    </div>
+
+    <!-- MODAL: CÀI ĐẶT LỊCH MẪU MẶC ĐỊNH HÀNG NGÀY -->
+    <div class="modal-backdrop" id="modalRoutineTemplates">
+      <div class="modal-card" style="max-width: 500px;">
+        <div class="modal-header">
+          <div class="modal-title-box">
+            <span class="modal-badge-icon">⚙️</span>
+            <h3>Cài Đặt Lịch Mẫu Mặc Định</h3>
+          </div>
+          <button class="btn-close-modal" id="btnCloseRoutineModal">✕</button>
+        </div>
+        
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4;">
+          Các công việc dưới đây tự động lặp lại mỗi ngày. Bạn có thể sửa tên, giờ, thêm hoặc xóa việc, sau đó nhấn <strong>"Áp Dụng Cho Cả Tháng"</strong> để cập nhật toàn bộ!
+        </p>
+
+        <div id="routineListContainer" style="max-height: 320px; overflow-y: auto; margin-bottom: 14px;">
+          <!-- Dynamically populated routine items -->
+        </div>
+
+        <button type="button" id="btnAddRoutineItem" style="width: 100%; padding: 8px; border: 1px dashed var(--primary); background: var(--primary-soft); color: var(--primary); border-radius: var(--radius-sm); font-family: var(--font-main); font-weight: 700; cursor: pointer; margin-bottom: 14px;">
+          + Thêm Việc Mẫu Mới
+        </button>
+
+        <div class="modal-actions" style="justify-content: space-between;">
+          <button type="button" class="btn-cancel" id="btnCancelRoutineModal">Đóng</button>
+          <button type="button" class="btn-submit" id="btnApplyRoutinesAllMonth">🚀 Áp Dụng Cho Cả Tháng 10</button>
+        </div>
       </div>
     </div>
 

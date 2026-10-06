@@ -27,6 +27,17 @@ class StarnestPlannerApp {
     this.waterCount = parseInt(localStorage.getItem("planner_water_count") || "4", 10);
     this.currentMood = localStorage.getItem("planner_current_mood") || "good";
     this.currentTheme = localStorage.getItem("planner_theme") || "theme-pastel-pink";
+    this.originalEditTitle = "";
+
+    // Default daily routine templates (lặp lại mỗi ngày)
+    this.defaultRoutines = JSON.parse(localStorage.getItem("planner_default_routines") || "null") || [
+      { title: "Uống 500ml nước ấm & Khởi động", session: "🌅 Buổi Sáng", start: "06:00", end: "06:30", category: "🧘 Sức khỏe", priority: "⭐⭐⭐ Cao" },
+      { title: "Thể dục buổi sáng / Chạy bộ", session: "🌅 Buổi Sáng", start: "06:30", end: "07:15", category: "🧘 Sức khỏe", priority: "⭐⭐⭐ Cao" },
+      { title: "Ăn sáng dinh dưỡng & Lập mục tiêu ngày", session: "🌅 Buổi Sáng", start: "07:15", end: "08:00", category: "🏠 Cá nhân", priority: "⭐⭐ Trung bình" },
+      { title: "Xử lý công việc trọng tâm trong ngày", session: "🌇 Buổi Chiều", start: "13:30", end: "15:30", category: "💼 Công việc", priority: "⭐⭐⭐ Cao" },
+      { title: "Rà soát tiến độ & Hoàn thành checklist", session: "🌇 Buổi Chiều", start: "15:30", end: "16:30", category: "🎯 Kế hoạch", priority: "⭐⭐⭐ Cao" },
+      { title: "Đọc sách / Nâng cao kỹ năng cá nhân", session: "🌇 Buổi Chiều", start: "16:30", end: "17:30", category: "📚 Học tập", priority: "⭐⭐ Trung bình" }
+    ];
 
     this.initElements();
     this.applyTheme(this.currentTheme);
@@ -42,6 +53,7 @@ class StarnestPlannerApp {
 
     // Header & Navigation
     this.btnSyncGsheet = document.getElementById("btnSyncGsheet");
+    this.btnRoutineTemplates = document.getElementById("btnRoutineTemplates");
     this.prevMonthBtn = document.getElementById("prevMonthBtn");
     this.nextMonthBtn = document.getElementById("nextMonthBtn");
     this.currentMonthLabel = document.getElementById("currentMonthLabel");
@@ -73,12 +85,17 @@ class StarnestPlannerApp {
     // Habits Tab
     this.waterCups = document.querySelectorAll("#waterCups .cup");
 
-    // Modal Add Task
+    // Modal Add/Edit Task
     this.fabAddTask = document.getElementById("fabAddTask");
     this.modalBackdrop = document.getElementById("modalBackdrop");
     this.btnCloseModal = document.getElementById("btnCloseModal");
     this.btnCancelModal = document.getElementById("btnCancelModal");
     this.addPlanForm = document.getElementById("addPlanForm");
+    this.modalBadgeIcon = document.getElementById("modalBadgeIcon");
+    this.modalTitleText = document.getElementById("modalTitleText");
+    this.btnSubmitModal = document.getElementById("btnSubmitModal");
+    this.inpEditTaskId = document.getElementById("inpEditTaskId");
+    this.editScopeGroup = document.getElementById("editScopeGroup");
     this.inpTitle = document.getElementById("inpTitle");
     this.inpDate = document.getElementById("inpDate");
     this.inpSession = document.getElementById("inpSession");
@@ -87,6 +104,14 @@ class StarnestPlannerApp {
     this.inpPriority = document.getElementById("inpPriority");
     this.inpCategory = document.getElementById("inpCategory");
     this.inpNotes = document.getElementById("inpNotes");
+
+    // Routine Templates Modal Elements
+    this.modalRoutineTemplates = document.getElementById("modalRoutineTemplates");
+    this.btnCloseRoutineModal = document.getElementById("btnCloseRoutineModal");
+    this.btnCancelRoutineModal = document.getElementById("btnCancelRoutineModal");
+    this.routineListContainer = document.getElementById("routineListContainer");
+    this.btnAddRoutineItem = document.getElementById("btnAddRoutineItem");
+    this.btnApplyRoutinesAllMonth = document.getElementById("btnApplyRoutinesAllMonth");
 
     // Toast
     this.toastPopup = document.getElementById("toastPopup");
@@ -318,6 +343,42 @@ class StarnestPlannerApp {
         this.handleAddTaskSubmit();
       });
     }
+
+    // Routine Templates Modal Events
+    if (this.btnRoutineTemplates) {
+      this.btnRoutineTemplates.addEventListener("click", () => {
+        this.openRoutineModal();
+      });
+    }
+    if (this.btnCloseRoutineModal) {
+      this.btnCloseRoutineModal.addEventListener("click", () => this.closeRoutineModal());
+    }
+    if (this.btnCancelRoutineModal) {
+      this.btnCancelRoutineModal.addEventListener("click", () => this.closeRoutineModal());
+    }
+    if (this.modalRoutineTemplates) {
+      this.modalRoutineTemplates.addEventListener("click", (e) => {
+        if (e.target === this.modalRoutineTemplates) this.closeRoutineModal();
+      });
+    }
+    if (this.btnAddRoutineItem) {
+      this.btnAddRoutineItem.addEventListener("click", () => {
+        this.defaultRoutines.push({
+          title: "Công việc mẫu mới",
+          session: "🌅 Buổi Sáng",
+          start: "08:00",
+          end: "09:00",
+          category: "💼 Công việc",
+          priority: "⭐⭐⭐ Cao"
+        });
+        this.renderRoutineList();
+      });
+    }
+    if (this.btnApplyRoutinesAllMonth) {
+      this.btnApplyRoutinesAllMonth.addEventListener("click", () => {
+        this.applyRoutinesToAllMonth();
+      });
+    }
   }
 
   async handleGasSync(gasUrl) {
@@ -496,6 +557,7 @@ class StarnestPlannerApp {
           </div>
         </div>
         <div class="task-actions">
+          <button class="btn-task-edit" title="Chỉnh sửa công việc">✏️</button>
           <button class="btn-task-del" title="Xóa công việc">🗑️</button>
         </div>
       `;
@@ -511,6 +573,13 @@ class StarnestPlannerApp {
       const contentEl = card.querySelector(".task-content");
       contentEl.addEventListener("click", () => {
         this.toggleTaskChecklist(task.ID);
+      });
+
+      // Edit task button
+      const editBtn = card.querySelector(".btn-task-edit");
+      editBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.openEditModal(task);
       });
 
       // Delete task button
@@ -580,9 +649,43 @@ class StarnestPlannerApp {
 
   openAddModal() {
     if (!this.modalBackdrop) return;
+    this.inpEditTaskId.value = "";
+    this.originalEditTitle = "";
+    if (this.modalBadgeIcon) this.modalBadgeIcon.textContent = "🌸";
+    if (this.modalTitleText) this.modalTitleText.textContent = "Thêm Kế Hoạch Mới";
+    if (this.btnSubmitModal) this.btnSubmitModal.textContent = "💖 Lưu Kế Hoạch";
+    if (this.editScopeGroup) this.editScopeGroup.style.display = "none";
+
     this.inpDate.value = this.selectedDate;
     this.inpTitle.value = "";
     this.inpNotes.value = "";
+    this.modalBackdrop.classList.add("show");
+    setTimeout(() => {
+      if (this.inpTitle) this.inpTitle.focus();
+    }, 100);
+  }
+
+  openEditModal(task) {
+    if (!this.modalBackdrop) return;
+    this.inpEditTaskId.value = task.ID;
+    this.originalEditTitle = task.Title;
+    if (this.modalBadgeIcon) this.modalBadgeIcon.textContent = "✏️";
+    if (this.modalTitleText) this.modalTitleText.textContent = "Chỉnh Sửa Kế Hoạch";
+    if (this.btnSubmitModal) this.btnSubmitModal.textContent = "💾 Cập Nhật";
+    if (this.editScopeGroup) this.editScopeGroup.style.display = "block";
+
+    this.inpDate.value = task.Date;
+    this.inpTitle.value = task.Title;
+    this.inpSession.value = task.Session || "🌅 Buổi Sáng";
+    this.inpStartTime.value = task.Start_Time || "08:00";
+    this.inpEndTime.value = task.End_Time || "09:00";
+    this.inpPriority.value = task.Priority || "⭐⭐⭐ Cao";
+    this.inpCategory.value = task.Category || "💼 Công việc";
+    this.inpNotes.value = task.Notes || "";
+
+    const singleRadio = document.querySelector('input[name="editScope"][value="single"]');
+    if (singleRadio) singleRadio.checked = true;
+
     this.modalBackdrop.classList.add("show");
     setTimeout(() => {
       if (this.inpTitle) this.inpTitle.focus();
@@ -603,59 +706,229 @@ class StarnestPlannerApp {
     const parts = dateVal.split("-");
     const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
     const dow = DOW_FULL[d.getDay()];
+    const editingId = this.inpEditTaskId.value;
 
-    const taskPayload = {
-      title: title,
-      date: dateVal,
-      session: this.inpSession.value,
-      start_time: this.inpStartTime.value || "08:00",
-      end_time: this.inpEndTime.value || "09:00",
-      day_of_week: dow,
-      priority: this.inpPriority.value,
-      category: this.inpCategory.value,
-      notes: this.inpNotes.value.trim()
-    };
+    if (editingId) {
+      // Editing existing task
+      const scopeRadio = document.querySelector('input[name="editScope"]:checked');
+      const scope = scopeRadio ? scopeRadio.value : "single";
 
-    const newTask = {
-      ID: "TASK_" + (1000 + this.tasks.length + 1),
-      Title: taskPayload.title,
-      Date: taskPayload.date,
-      Start_Time: taskPayload.start_time,
-      End_Time: taskPayload.end_time,
-      Session: taskPayload.session,
-      Day_Of_Week: taskPayload.day_of_week,
-      Status: "⏳ Chưa hoàn thành",
-      Checklist_Done: false,
-      Priority: taskPayload.priority,
-      Category: taskPayload.category,
-      Notes: taskPayload.notes
-    };
-
-    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-      try {
-        const resp = await fetch("/api/tasks/add", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(taskPayload)
+      if (scope === "all" && this.originalEditTitle) {
+        // Apply to ALL occurrences across all 31 days of the month
+        let updatedCount = 0;
+        this.tasks.forEach(t => {
+          if (t.Title === this.originalEditTitle) {
+            t.Title = title;
+            t.Start_Time = this.inpStartTime.value;
+            t.End_Time = this.inpEndTime.value;
+            t.Session = this.inpSession.value;
+            t.Priority = this.inpPriority.value;
+            t.Category = this.inpCategory.value;
+            if (this.inpNotes.value.trim()) t.Notes = this.inpNotes.value.trim();
+            updatedCount++;
+          }
         });
-        const data = await resp.json();
-        if (data.success && data.task) {
-          this.tasks.push(data.task);
-        } else {
-          this.tasks.push(newTask);
+
+        // Also update defaultRoutines list if matched
+        const matchedRoutine = this.defaultRoutines.find(r => r.title === this.originalEditTitle);
+        if (matchedRoutine) {
+          matchedRoutine.title = title;
+          matchedRoutine.start = this.inpStartTime.value;
+          matchedRoutine.end = this.inpEndTime.value;
+          matchedRoutine.session = this.inpSession.value;
+          localStorage.setItem("planner_default_routines", JSON.stringify(this.defaultRoutines));
         }
-      } catch (err) {
-        console.warn("Add task API failed, adding locally:", err);
-        this.tasks.push(newTask);
+
+        this.showToast(`Đã đổi lịch mẫu này cho ${updatedCount} ngày trong tháng! 🌟`, "🚀", 3500);
+      } else {
+        // Edit single task
+        const task = this.tasks.find(t => t.ID === editingId);
+        if (task) {
+          task.Title = title;
+          task.Date = dateVal;
+          task.Session = this.inpSession.value;
+          task.Start_Time = this.inpStartTime.value;
+          task.End_Time = this.inpEndTime.value;
+          task.Day_Of_Week = dow;
+          task.Priority = this.inpPriority.value;
+          task.Category = this.inpCategory.value;
+          task.Notes = this.inpNotes.value.trim();
+        }
+        this.showToast("Đã cập nhật công việc thành công! ✨", "✏️");
       }
     } else {
-      this.tasks.push(newTask);
+      // Create new task
+      const taskPayload = {
+        title: title,
+        date: dateVal,
+        session: this.inpSession.value,
+        start_time: this.inpStartTime.value || "08:00",
+        end_time: this.inpEndTime.value || "09:00",
+        day_of_week: dow,
+        priority: this.inpPriority.value,
+        category: this.inpCategory.value,
+        notes: this.inpNotes.value.trim()
+      };
+
+      const newTask = {
+        ID: "TASK_" + (1000 + this.tasks.length + 1),
+        Title: taskPayload.title,
+        Date: taskPayload.date,
+        Start_Time: taskPayload.start_time,
+        End_Time: taskPayload.end_time,
+        Session: taskPayload.session,
+        Day_Of_Week: taskPayload.day_of_week,
+        Status: "⏳ Chưa hoàn thành",
+        Checklist_Done: false,
+        Priority: taskPayload.priority,
+        Category: taskPayload.category,
+        Notes: taskPayload.notes
+      };
+
+      if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+        try {
+          const resp = await fetch("/api/tasks/add", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(taskPayload)
+          });
+          const data = await resp.json();
+          if (data.success && data.task) {
+            this.tasks.push(data.task);
+          } else {
+            this.tasks.push(newTask);
+          }
+        } catch (err) {
+          console.warn("Add task API failed, adding locally:", err);
+          this.tasks.push(newTask);
+        }
+      } else {
+        this.tasks.push(newTask);
+      }
+      this.showToast("Đã lưu kế hoạch mới thành công! 💖", "🌸");
     }
 
     localStorage.setItem("planner_tasks_cache", JSON.stringify(this.tasks));
     this.closeAddModal();
     this.selectDate(dateVal);
-    this.showToast("Đã lưu kế hoạch mới thành công! 💖", "🌸");
+  }
+
+  // Routine Templates Management
+  openRoutineModal() {
+    this.renderRoutineList();
+    if (this.modalRoutineTemplates) {
+      this.modalRoutineTemplates.classList.add("show");
+    }
+  }
+
+  closeRoutineModal() {
+    if (this.modalRoutineTemplates) {
+      this.modalRoutineTemplates.classList.remove("show");
+    }
+  }
+
+  renderRoutineList() {
+    if (!this.routineListContainer) return;
+    this.routineListContainer.innerHTML = "";
+
+    this.defaultRoutines.forEach((r, idx) => {
+      const item = document.createElement("div");
+      item.className = "routine-list-item";
+      item.style.display = "flex";
+      item.style.alignItems = "center";
+      item.style.gap = "8px";
+      item.style.marginBottom = "8px";
+      item.style.padding = "8px 10px";
+      item.style.background = "var(--bg-card-sub)";
+      item.style.borderRadius = "var(--radius-sm)";
+      item.style.border = "1px solid var(--border-color)";
+
+      item.innerHTML = `
+        <select class="routine-input-session" style="padding: 6px; border-radius: 6px; border: 1px solid var(--border-color); font-size: 11px; background: var(--bg-card); color: var(--text-main);">
+          <option value="🌅 Buổi Sáng" ${r.session.includes("Sáng") ? "selected" : ""}>🌅 Sáng</option>
+          <option value="🌇 Buổi Chiều" ${r.session.includes("Chiều") ? "selected" : ""}>🌇 Chiều</option>
+          <option value="🌙 Buổi Tối" ${r.session.includes("Tối") ? "selected" : ""}>🌙 Tối</option>
+        </select>
+        <input type="text" class="routine-input-title" value="${escapeHtml(r.title)}" placeholder="Tên việc..." style="flex: 1; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color); font-size: 12px; font-weight: 700; background: var(--bg-card); color: var(--text-main);">
+        <input type="time" class="routine-input-start" value="${r.start || '08:00'}" style="width: 75px; padding: 5px; border-radius: 6px; border: 1px solid var(--border-color); font-size: 11px; background: var(--bg-card); color: var(--text-main);">
+        <button type="button" class="routine-btn-remove" title="Xóa" style="border: none; background: transparent; cursor: pointer; color: #EF4444; font-size: 15px; padding: 4px;">🗑️</button>
+      `;
+
+      const titleInput = item.querySelector(".routine-input-title");
+      titleInput.addEventListener("input", (e) => {
+        r.title = e.target.value;
+      });
+      const sessionSelect = item.querySelector(".routine-input-session");
+      sessionSelect.addEventListener("change", (e) => {
+        r.session = e.target.value;
+      });
+      const startInput = item.querySelector(".routine-input-start");
+      startInput.addEventListener("change", (e) => {
+        r.start = e.target.value;
+      });
+      const removeBtn = item.querySelector(".routine-btn-remove");
+      removeBtn.addEventListener("click", () => {
+        this.defaultRoutines.splice(idx, 1);
+        this.renderRoutineList();
+      });
+
+      this.routineListContainer.appendChild(item);
+    });
+  }
+
+  applyRoutinesToAllMonth() {
+    if (this.defaultRoutines.length === 0) {
+      alert("Danh sách việc mặc định không được để trống!");
+      return;
+    }
+
+    localStorage.setItem("planner_default_routines", JSON.stringify(this.defaultRoutines));
+
+    // Names of default tasks to replace
+    const defaultTitles = new Set(this.defaultRoutines.map(r => r.title));
+    const oldKnownTitles = new Set([
+      "Uống 500ml nước ấm & Khởi động",
+      "Thể dục buổi sáng / Chạy bộ",
+      "Ăn sáng dinh dưỡng & Lập mục tiêu ngày",
+      "Xử lý công việc trọng tâm trong ngày",
+      "Rà soát tiến độ & Hoàn thành checklist",
+      "Đọc sách / Nâng cao kỹ năng cá nhân"
+    ]);
+
+    // Keep user's custom one-off tasks
+    const customTasks = this.tasks.filter(t => !oldKnownTitles.has(t.Title) && !defaultTitles.has(t.Title));
+
+    const newAllTasks = [...customTasks];
+    let counter = 1;
+
+    for (let day = 1; day <= 31; day++) {
+      const dateStr = `2026-10-${String(day).padStart(2, '0')}`;
+      const d = new Date(2026, 9, day);
+      const dow = DOW_FULL[d.getDay()];
+
+      this.defaultRoutines.forEach(routine => {
+        newAllTasks.push({
+          ID: `TASK_${1000 + counter++}`,
+          Title: routine.title,
+          Date: dateStr,
+          Start_Time: routine.start || "08:00",
+          End_Time: routine.end || "09:00",
+          Session: routine.session,
+          Day_Of_Week: dow,
+          Status: "⏳ Chưa hoàn thành",
+          Checklist_Done: false,
+          Priority: routine.priority || "⭐⭐⭐ Cao",
+          Category: routine.category || "💼 Công việc",
+          Notes: ""
+        });
+      });
+    }
+
+    this.tasks = newAllTasks;
+    localStorage.setItem("planner_tasks_cache", JSON.stringify(this.tasks));
+    this.closeRoutineModal();
+    this.renderAll();
+    this.showToast(`Đã áp dụng ${this.defaultRoutines.length} việc mẫu cho cả 31 ngày trong tháng! 🚀✨`, "🎉", 4000);
   }
 
   renderMonthCalendar() {
