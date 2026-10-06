@@ -121,26 +121,25 @@ class StarnestPlannerApp {
   }
 
   async loadData() {
-    try {
-      const resp = await fetch("/api/tasks");
-      if (resp.ok) {
-        const json = await resp.json();
-        this.tasks = json.data || [];
-      } else {
-        throw new Error("API response not ok");
-      }
-    } catch (e) {
-      console.warn("Could not load from /api/tasks, trying local tasks_data.json:", e);
+    // Only fetch /api/tasks if running locally or on custom backend server
+    const isLocalBackend = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+
+    if (isLocalBackend) {
       try {
-        const localResp = await fetch("tasks_data.json");
-        this.tasks = await localResp.json();
-      } catch (err) {
-        console.error("Failed to load tasks_data.json:", err);
-        const cached = localStorage.getItem("planner_tasks_cache");
-        if (cached) {
-          this.tasks = JSON.parse(cached);
+        const resp = await fetch("/api/tasks");
+        if (resp.ok) {
+          const json = await resp.json();
+          this.tasks = json.data || [];
+        } else {
+          throw new Error("API response not ok");
         }
+      } catch (e) {
+        console.warn("Local API not available, loading fallback tasks_data.json");
+        await this.loadFallbackData();
       }
+    } else {
+      // On GitHub Pages: Load directly from tasks_data.json
+      await this.loadFallbackData();
     }
 
     if (this.tasks && this.tasks.length > 0) {
@@ -148,6 +147,18 @@ class StarnestPlannerApp {
     }
 
     this.renderAll();
+  }
+
+  async loadFallbackData() {
+    try {
+      const localResp = await fetch("tasks_data.json");
+      this.tasks = await localResp.json();
+    } catch (err) {
+      const cached = localStorage.getItem("planner_tasks_cache");
+      if (cached) {
+        this.tasks = JSON.parse(cached);
+      }
+    }
   }
 
   bindEvents() {
@@ -527,17 +538,19 @@ class StarnestPlannerApp {
     // Cache locally
     localStorage.setItem("planner_tasks_cache", JSON.stringify(this.tasks));
 
-    // Send API update
-    try {
-      await fetch("/api/tasks/toggle", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: taskId })
-      });
-      this.showToast(task.Checklist_Done ? "Đã xong: " + task.Title : "Đã chuyển về chưa xong", task.Checklist_Done ? "💖" : "⏳");
-    } catch (err) {
-      console.warn("Toggle sync failed:", err);
+    // Send API update if on local backend
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      try {
+        await fetch("/api/tasks/toggle", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: taskId })
+        });
+      } catch (err) {
+        console.warn("Toggle sync failed:", err);
+      }
     }
+    this.showToast(task.Checklist_Done ? "Đã xong: " + task.Title : "Đã chuyển về chưa xong", task.Checklist_Done ? "💖" : "⏳");
   }
 
   async deleteTask(taskId) {
@@ -550,16 +563,19 @@ class StarnestPlannerApp {
     this.renderDateStrip();
     localStorage.setItem("planner_tasks_cache", JSON.stringify(this.tasks));
 
-    try {
-      await fetch("/api/tasks/delete", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: taskId })
-      });
-      this.showToast(`Đã xóa: ${title}`, "🗑️");
-    } catch (err) {
-      console.warn("Delete API failed:", err);
+    // Send API update if on local backend
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      try {
+        await fetch("/api/tasks/delete", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: taskId })
+        });
+      } catch (err) {
+        console.warn("Delete API failed:", err);
+      }
     }
+    this.showToast(`Đã xóa: ${title}`, "🗑️");
   }
 
   openAddModal() {
@@ -600,50 +616,40 @@ class StarnestPlannerApp {
       notes: this.inpNotes.value.trim()
     };
 
-    try {
-      const resp = await fetch("/api/tasks/add", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(taskPayload)
-      });
-      const data = await resp.json();
-      if (data.success && data.task) {
-        this.tasks.push(data.task);
-      } else {
-        // Fallback local addition
-        const fallbackTask = {
-          ID: "TASK_" + (1000 + this.tasks.length + 1),
-          Title: taskPayload.title,
-          Date: taskPayload.date,
-          Start_Time: taskPayload.start_time,
-          End_Time: taskPayload.end_time,
-          Session: taskPayload.session,
-          Day_Of_Week: taskPayload.day_of_week,
-          Status: "⏳ Chưa hoàn thành",
-          Checklist_Done: false,
-          Priority: taskPayload.priority,
-          Category: taskPayload.category,
-          Notes: taskPayload.notes
-        };
-        this.tasks.push(fallbackTask);
+    const newTask = {
+      ID: "TASK_" + (1000 + this.tasks.length + 1),
+      Title: taskPayload.title,
+      Date: taskPayload.date,
+      Start_Time: taskPayload.start_time,
+      End_Time: taskPayload.end_time,
+      Session: taskPayload.session,
+      Day_Of_Week: taskPayload.day_of_week,
+      Status: "⏳ Chưa hoàn thành",
+      Checklist_Done: false,
+      Priority: taskPayload.priority,
+      Category: taskPayload.category,
+      Notes: taskPayload.notes
+    };
+
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      try {
+        const resp = await fetch("/api/tasks/add", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(taskPayload)
+        });
+        const data = await resp.json();
+        if (data.success && data.task) {
+          this.tasks.push(data.task);
+        } else {
+          this.tasks.push(newTask);
+        }
+      } catch (err) {
+        console.warn("Add task API failed, adding locally:", err);
+        this.tasks.push(newTask);
       }
-    } catch (err) {
-      console.warn("Add task API failed, adding locally:", err);
-      const fallbackTask = {
-        ID: "TASK_" + (1000 + this.tasks.length + 1),
-        Title: taskPayload.title,
-        Date: taskPayload.date,
-        Start_Time: taskPayload.start_time,
-        End_Time: taskPayload.end_time,
-        Session: taskPayload.session,
-        Day_Of_Week: taskPayload.day_of_week,
-        Status: "⏳ Chưa hoàn thành",
-        Checklist_Done: false,
-        Priority: taskPayload.priority,
-        Category: taskPayload.category,
-        Notes: taskPayload.notes
-      };
-      this.tasks.push(fallbackTask);
+    } else {
+      this.tasks.push(newTask);
     }
 
     localStorage.setItem("planner_tasks_cache", JSON.stringify(this.tasks));
