@@ -285,6 +285,28 @@ body {
   box-shadow: 0 2px 8px rgba(255, 117, 143, 0.4);
 }
 
+.btn-email-reminder {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-card-sub);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 7px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-email-reminder:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
 .btn-theme-toggle {
   background: var(--bg-card-sub);
   border: 1px solid var(--border-color);

@@ -44,6 +44,11 @@
             🔔 <span class="reminder-text">Nhắc Lịch</span>
           </button>
 
+          <!-- Email Reminder Button -->
+          <button class="btn-email-reminder" id="btnEmailReminder" title="Nhắc lịch tự động qua Email">
+            📧 <span class="email-text">Nhắc Mail</span>
+          </button>
+
           <!-- Theme Picker Dropdown -->
           <div class="theme-dropdown">
             <button class="btn-theme-toggle" id="btnThemeToggle" title="Đổi giao diện">
@@ -384,6 +389,41 @@
         <div class="modal-actions" style="justify-content: space-between;">
           <button type="button" class="btn-cancel" id="btnCancelRoutineModal">Đóng</button>
           <button type="button" class="btn-submit" id="btnApplyRoutinesAllMonth">🚀 Áp Dụng Cho Cả Tháng 10</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: CÀI ĐẶT NHẮC LỊCH QUA EMAIL -->
+    <div class="modal-backdrop" id="modalEmailReminder">
+      <div class="modal-card" style="max-width: 480px;">
+        <div class="modal-header">
+          <div class="modal-title-box">
+            <span class="modal-badge-icon">📧</span>
+            <h3>Nhắc Lịch Tự Động Qua Email</h3>
+          </div>
+          <button class="btn-close-modal" id="btnCloseEmailModal">✕</button>
+        </div>
+        
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5;">
+          Hệ thống tự động quét dữ liệu từ Google Sheet và gửi email tóm tắt công việc mỗi ngày trực tiếp tới hòm thư cá nhân của bạn!
+        </p>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="font-weight: 700; font-size: 13px; margin-bottom: 6px; display: block; color: var(--text-main);">
+            📮 Hòm thư nhận nhắc lịch:
+          </label>
+          <input type="email" id="inpUserEmail" value="nguyenthanhtrongnhan14@gmail.com" placeholder="name@gmail.com" style="width: 100%; padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-family: var(--font-main); font-size: 14px; background: var(--bg-card); color: var(--text-main);">
+        </div>
+
+        <div style="background: var(--bg-card-sub); padding: 12px 14px; border-radius: var(--radius-sm); font-size: 12px; margin-bottom: 16px; border: 1px dashed var(--border-color); line-height: 1.6;">
+          <div style="font-weight: 800; color: var(--primary); margin-bottom: 4px;">⚙️ Thiết lập tự động:</div>
+          • <strong>Lịch gửi tự động:</strong> 07:00 sáng mỗi ngày từ Google Sheet 24/7.<br>
+          • <strong>Nội dung:</strong> Danh sách việc Buổi Sáng, Chiều, Tối kèm giờ làm, mức ưu tiên và link mở checklist 1 chạm.
+        </div>
+
+        <div class="modal-actions" style="justify-content: space-between;">
+          <button type="button" class="btn-cancel" id="btnCancelEmailModal">Đóng</button>
+          <button type="button" class="btn-submit" id="btnSendTestEmail">🚀 Gửi Email Nhắc Việc Ngay</button>
         </div>
       </div>
     </div>

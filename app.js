@@ -126,6 +126,19 @@ class StarnestPlannerApp {
     this.reminderAlertTime = document.getElementById("reminderAlertTime");
     this.btnReminderAck = document.getElementById("btnReminderAck");
 
+    // Email Reminder Modal Elements
+    this.btnEmailReminder = document.getElementById("btnEmailReminder");
+    this.modalEmailReminder = document.getElementById("modalEmailReminder");
+    this.btnCloseEmailModal = document.getElementById("btnCloseEmailModal");
+    this.btnCancelEmailModal = document.getElementById("btnCancelEmailModal");
+    this.inpUserEmail = document.getElementById("inpUserEmail");
+    this.btnSendTestEmail = document.getElementById("btnSendTestEmail");
+
+    const savedEmail = localStorage.getItem("planner_user_email");
+    if (savedEmail && this.inpUserEmail) {
+      this.inpUserEmail.value = savedEmail;
+    }
+
     // Update reminder toggle button state
     if (this.btnReminderToggle) {
       if (this.remindersEnabled) {
@@ -428,6 +441,73 @@ class StarnestPlannerApp {
       this.btnReminderAck.addEventListener("click", () => {
         if (this.reminderAlertCard) {
           this.reminderAlertCard.classList.remove("show");
+        }
+      });
+    }
+
+    // Email Reminder Modal Events
+    if (this.btnEmailReminder) {
+      this.btnEmailReminder.addEventListener("click", () => {
+        if (this.modalEmailReminder) this.modalEmailReminder.classList.add("show");
+      });
+    }
+    if (this.btnCloseEmailModal) {
+      this.btnCloseEmailModal.addEventListener("click", () => {
+        if (this.modalEmailReminder) this.modalEmailReminder.classList.remove("show");
+      });
+    }
+    if (this.btnCancelEmailModal) {
+      this.btnCancelEmailModal.addEventListener("click", () => {
+        if (this.modalEmailReminder) this.modalEmailReminder.classList.remove("show");
+      });
+    }
+    if (this.modalEmailReminder) {
+      this.modalEmailReminder.addEventListener("click", (e) => {
+        if (e.target === this.modalEmailReminder) this.modalEmailReminder.classList.remove("show");
+      });
+    }
+
+    // Send Test / Daily Email Button
+    if (this.btnSendTestEmail) {
+      this.btnSendTestEmail.addEventListener("click", async () => {
+        const email = (this.inpUserEmail ? this.inpUserEmail.value.trim() : "") || "nguyenthanhtrongnhan14@gmail.com";
+        localStorage.setItem("planner_user_email", email);
+
+        const originalBtnText = this.btnSendTestEmail.innerHTML;
+        this.btnSendTestEmail.innerHTML = "⏳ Đang gửi mail...";
+        this.btnSendTestEmail.disabled = true;
+
+        const gasUrl = localStorage.getItem("planner_gas_url");
+
+        try {
+          if (gasUrl) {
+            await fetch(gasUrl, {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ action: "send_email_now", email: email, date: this.selectedDate })
+            });
+            this.showToast(`Đã gửi lệnh nhắc lịch qua email tới ${email}! 📧✨`, "📧", 4000);
+          } else {
+            // Build mailto fallback
+            const dayTasks = this.tasks.filter(t => t.Date === this.selectedDate);
+            let mailBody = `🌸 Lịch làm việc ngày ${this.selectedDate} (${dayTasks.length} việc):\n\n`;
+            dayTasks.forEach(t => {
+              mailBody += `• [${t.Start_Time} - ${t.End_Time}] ${t.Title} (${t.Priority || ''})\n`;
+            });
+            mailBody += `\nLink ứng dụng: https://bombeodeptrai.github.io/starnest-daily-planner/`;
+
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent("🌸 [Kiểu Việt Planner] Lịch làm việc ngày " + this.selectedDate)}&body=${encodeURIComponent(mailBody)}`;
+            window.open(mailtoLink, "_blank");
+            this.showToast(`Đã mở email nhắc lịch gửi tới ${email}! 📧`, "📧", 3500);
+          }
+        } catch (e) {
+          console.warn("Email send error:", e);
+          this.showToast(`Đã kích hoạt gửi mail tới ${email}! 📧`, "📧", 3500);
+        } finally {
+          this.btnSendTestEmail.innerHTML = originalBtnText;
+          this.btnSendTestEmail.disabled = false;
+          if (this.modalEmailReminder) this.modalEmailReminder.classList.remove("show");
         }
       });
     }
