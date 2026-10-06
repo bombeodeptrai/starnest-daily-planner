@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  planner:
+    build: .
+    container_name: starnest_planner_backend
+    restart: always
+    ports:
+      - "8089:8089"
+    volumes:
+      - ./tasks_data.json:/app/tasks_data.json
+      - ./CONG_VIEC_HANG_NGAY.csv:/app/CONG_VIEC_HANG_NGAY.csv

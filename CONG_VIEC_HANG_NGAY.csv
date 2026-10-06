@@ -1,0 +1,188 @@
+﻿ID,Title,Date,Start_Time,End_Time,Session,Day_Of_Week,Status,Checklist_Done,Priority,Category,Notes
+TASK_1001,Uống 500ml nước ấm & Khởi động,2026-10-01,06:00,06:30,🌅 Buổi Sáng,Thứ 5,✅ Hoàn thành,True,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1002,Thể dục buổi sáng / Chạy bộ,2026-10-01,06:30,07:15,🌅 Buổi Sáng,Thứ 5,✅ Hoàn thành,True,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1003,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-01,07:15,08:00,🌅 Buổi Sáng,Thứ 5,✅ Hoàn thành,True,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1004,Xử lý công việc trọng tâm trong ngày,2026-10-01,13:30,15:30,🌇 Buổi Chiều,Thứ 5,✅ Hoàn thành,True,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1005,Rà soát tiến độ & Hoàn thành checklist,2026-10-01,15:30,16:30,🌇 Buổi Chiều,Thứ 5,✅ Hoàn thành,True,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1006,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-01,16:30,17:30,🌇 Buổi Chiều,Thứ 5,✅ Hoàn thành,True,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1007,Uống 500ml nước ấm & Khởi động,2026-10-02,06:00,06:30,🌅 Buổi Sáng,Thứ 6,✅ Hoàn thành,True,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1008,Thể dục buổi sáng / Chạy bộ,2026-10-02,06:30,07:15,🌅 Buổi Sáng,Thứ 6,✅ Hoàn thành,True,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1009,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-02,07:15,08:00,🌅 Buổi Sáng,Thứ 6,✅ Hoàn thành,True,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1010,Xử lý công việc trọng tâm trong ngày,2026-10-02,13:30,15:30,🌇 Buổi Chiều,Thứ 6,✅ Hoàn thành,True,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1011,Rà soát tiến độ & Hoàn thành checklist,2026-10-02,15:30,16:30,🌇 Buổi Chiều,Thứ 6,✅ Hoàn thành,True,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1012,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-02,16:30,17:30,🌇 Buổi Chiều,Thứ 6,✅ Hoàn thành,True,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1013,Uống 500ml nước ấm & Khởi động,2026-10-03,06:00,06:30,🌅 Buổi Sáng,Thứ 7,✅ Hoàn thành,True,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1014,Thể dục buổi sáng / Chạy bộ,2026-10-03,06:30,07:15,🌅 Buổi Sáng,Thứ 7,✅ Hoàn thành,True,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1015,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-03,07:15,08:00,🌅 Buổi Sáng,Thứ 7,✅ Hoàn thành,True,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1016,Xử lý công việc trọng tâm trong ngày,2026-10-03,13:30,15:30,🌇 Buổi Chiều,Thứ 7,✅ Hoàn thành,True,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1017,Rà soát tiến độ & Hoàn thành checklist,2026-10-03,15:30,16:30,🌇 Buổi Chiều,Thứ 7,✅ Hoàn thành,True,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1018,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-03,16:30,17:30,🌇 Buổi Chiều,Thứ 7,✅ Hoàn thành,True,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1019,Uống 500ml nước ấm & Khởi động,2026-10-04,06:00,06:30,🌅 Buổi Sáng,Chủ Nhật,✅ Hoàn thành,True,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1020,Thể dục buổi sáng / Chạy bộ,2026-10-04,06:30,07:15,🌅 Buổi Sáng,Chủ Nhật,✅ Hoàn thành,True,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1021,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-04,07:15,08:00,🌅 Buổi Sáng,Chủ Nhật,✅ Hoàn thành,True,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1022,Xử lý công việc trọng tâm trong ngày,2026-10-04,13:30,15:30,🌇 Buổi Chiều,Chủ Nhật,✅ Hoàn thành,True,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1023,Rà soát tiến độ & Hoàn thành checklist,2026-10-04,15:30,16:30,🌇 Buổi Chiều,Chủ Nhật,✅ Hoàn thành,True,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1024,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-04,16:30,17:30,🌇 Buổi Chiều,Chủ Nhật,✅ Hoàn thành,True,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1025,Uống 500ml nước ấm & Khởi động,2026-10-05,06:00,06:30,🌅 Buổi Sáng,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1026,Thể dục buổi sáng / Chạy bộ,2026-10-05,06:30,07:15,🌅 Buổi Sáng,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1027,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-05,07:15,08:00,🌅 Buổi Sáng,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1028,Xử lý công việc trọng tâm trong ngày,2026-10-05,13:30,15:30,🌇 Buổi Chiều,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1029,Rà soát tiến độ & Hoàn thành checklist,2026-10-05,15:30,16:30,🌇 Buổi Chiều,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1030,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-05,16:30,17:30,🌇 Buổi Chiều,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1031,Uống 500ml nước ấm & Khởi động,2026-10-06,06:00,06:30,🌅 Buổi Sáng,Thứ 3,✅ Hoàn thành,True,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1032,Thể dục buổi sáng / Chạy bộ,2026-10-06,06:30,07:15,🌅 Buổi Sáng,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1033,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-06,07:15,08:00,🌅 Buổi Sáng,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1034,Xử lý công việc trọng tâm trong ngày,2026-10-06,13:30,15:30,🌇 Buổi Chiều,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1035,Rà soát tiến độ & Hoàn thành checklist,2026-10-06,15:30,16:30,🌇 Buổi Chiều,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1036,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-06,16:30,17:30,🌇 Buổi Chiều,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1037,Uống 500ml nước ấm & Khởi động,2026-10-07,06:00,06:30,🌅 Buổi Sáng,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1038,Thể dục buổi sáng / Chạy bộ,2026-10-07,06:30,07:15,🌅 Buổi Sáng,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1039,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-07,07:15,08:00,🌅 Buổi Sáng,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1040,Xử lý công việc trọng tâm trong ngày,2026-10-07,13:30,15:30,🌇 Buổi Chiều,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1041,Rà soát tiến độ & Hoàn thành checklist,2026-10-07,15:30,16:30,🌇 Buổi Chiều,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1042,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-07,16:30,17:30,🌇 Buổi Chiều,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1043,Uống 500ml nước ấm & Khởi động,2026-10-08,06:00,06:30,🌅 Buổi Sáng,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1044,Thể dục buổi sáng / Chạy bộ,2026-10-08,06:30,07:15,🌅 Buổi Sáng,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1045,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-08,07:15,08:00,🌅 Buổi Sáng,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1046,Xử lý công việc trọng tâm trong ngày,2026-10-08,13:30,15:30,🌇 Buổi Chiều,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1047,Rà soát tiến độ & Hoàn thành checklist,2026-10-08,15:30,16:30,🌇 Buổi Chiều,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1048,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-08,16:30,17:30,🌇 Buổi Chiều,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1049,Uống 500ml nước ấm & Khởi động,2026-10-09,06:00,06:30,🌅 Buổi Sáng,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1050,Thể dục buổi sáng / Chạy bộ,2026-10-09,06:30,07:15,🌅 Buổi Sáng,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1051,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-09,07:15,08:00,🌅 Buổi Sáng,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1052,Xử lý công việc trọng tâm trong ngày,2026-10-09,13:30,15:30,🌇 Buổi Chiều,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1053,Rà soát tiến độ & Hoàn thành checklist,2026-10-09,15:30,16:30,🌇 Buổi Chiều,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1054,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-09,16:30,17:30,🌇 Buổi Chiều,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1055,Uống 500ml nước ấm & Khởi động,2026-10-10,06:00,06:30,🌅 Buổi Sáng,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1056,Thể dục buổi sáng / Chạy bộ,2026-10-10,06:30,07:15,🌅 Buổi Sáng,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1057,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-10,07:15,08:00,🌅 Buổi Sáng,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1058,Xử lý công việc trọng tâm trong ngày,2026-10-10,13:30,15:30,🌇 Buổi Chiều,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1059,Rà soát tiến độ & Hoàn thành checklist,2026-10-10,15:30,16:30,🌇 Buổi Chiều,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1060,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-10,16:30,17:30,🌇 Buổi Chiều,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1061,Uống 500ml nước ấm & Khởi động,2026-10-11,06:00,06:30,🌅 Buổi Sáng,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1062,Thể dục buổi sáng / Chạy bộ,2026-10-11,06:30,07:15,🌅 Buổi Sáng,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1063,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-11,07:15,08:00,🌅 Buổi Sáng,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1064,Xử lý công việc trọng tâm trong ngày,2026-10-11,13:30,15:30,🌇 Buổi Chiều,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1065,Rà soát tiến độ & Hoàn thành checklist,2026-10-11,15:30,16:30,🌇 Buổi Chiều,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1066,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-11,16:30,17:30,🌇 Buổi Chiều,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1067,Uống 500ml nước ấm & Khởi động,2026-10-12,06:00,06:30,🌅 Buổi Sáng,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1068,Thể dục buổi sáng / Chạy bộ,2026-10-12,06:30,07:15,🌅 Buổi Sáng,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1069,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-12,07:15,08:00,🌅 Buổi Sáng,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1070,Xử lý công việc trọng tâm trong ngày,2026-10-12,13:30,15:30,🌇 Buổi Chiều,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1071,Rà soát tiến độ & Hoàn thành checklist,2026-10-12,15:30,16:30,🌇 Buổi Chiều,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1072,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-12,16:30,17:30,🌇 Buổi Chiều,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1073,Uống 500ml nước ấm & Khởi động,2026-10-13,06:00,06:30,🌅 Buổi Sáng,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1074,Thể dục buổi sáng / Chạy bộ,2026-10-13,06:30,07:15,🌅 Buổi Sáng,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1075,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-13,07:15,08:00,🌅 Buổi Sáng,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1076,Xử lý công việc trọng tâm trong ngày,2026-10-13,13:30,15:30,🌇 Buổi Chiều,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1077,Rà soát tiến độ & Hoàn thành checklist,2026-10-13,15:30,16:30,🌇 Buổi Chiều,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1078,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-13,16:30,17:30,🌇 Buổi Chiều,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1079,Uống 500ml nước ấm & Khởi động,2026-10-14,06:00,06:30,🌅 Buổi Sáng,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1080,Thể dục buổi sáng / Chạy bộ,2026-10-14,06:30,07:15,🌅 Buổi Sáng,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1081,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-14,07:15,08:00,🌅 Buổi Sáng,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1082,Xử lý công việc trọng tâm trong ngày,2026-10-14,13:30,15:30,🌇 Buổi Chiều,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1083,Rà soát tiến độ & Hoàn thành checklist,2026-10-14,15:30,16:30,🌇 Buổi Chiều,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1084,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-14,16:30,17:30,🌇 Buổi Chiều,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1085,Uống 500ml nước ấm & Khởi động,2026-10-15,06:00,06:30,🌅 Buổi Sáng,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1086,Thể dục buổi sáng / Chạy bộ,2026-10-15,06:30,07:15,🌅 Buổi Sáng,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1087,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-15,07:15,08:00,🌅 Buổi Sáng,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1088,Xử lý công việc trọng tâm trong ngày,2026-10-15,13:30,15:30,🌇 Buổi Chiều,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1089,Rà soát tiến độ & Hoàn thành checklist,2026-10-15,15:30,16:30,🌇 Buổi Chiều,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1090,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-15,16:30,17:30,🌇 Buổi Chiều,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1091,Uống 500ml nước ấm & Khởi động,2026-10-16,06:00,06:30,🌅 Buổi Sáng,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1092,Thể dục buổi sáng / Chạy bộ,2026-10-16,06:30,07:15,🌅 Buổi Sáng,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1093,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-16,07:15,08:00,🌅 Buổi Sáng,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1094,Xử lý công việc trọng tâm trong ngày,2026-10-16,13:30,15:30,🌇 Buổi Chiều,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1095,Rà soát tiến độ & Hoàn thành checklist,2026-10-16,15:30,16:30,🌇 Buổi Chiều,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1096,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-16,16:30,17:30,🌇 Buổi Chiều,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1097,Uống 500ml nước ấm & Khởi động,2026-10-17,06:00,06:30,🌅 Buổi Sáng,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1098,Thể dục buổi sáng / Chạy bộ,2026-10-17,06:30,07:15,🌅 Buổi Sáng,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1099,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-17,07:15,08:00,🌅 Buổi Sáng,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1100,Xử lý công việc trọng tâm trong ngày,2026-10-17,13:30,15:30,🌇 Buổi Chiều,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1101,Rà soát tiến độ & Hoàn thành checklist,2026-10-17,15:30,16:30,🌇 Buổi Chiều,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1102,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-17,16:30,17:30,🌇 Buổi Chiều,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1103,Uống 500ml nước ấm & Khởi động,2026-10-18,06:00,06:30,🌅 Buổi Sáng,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1104,Thể dục buổi sáng / Chạy bộ,2026-10-18,06:30,07:15,🌅 Buổi Sáng,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1105,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-18,07:15,08:00,🌅 Buổi Sáng,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1106,Xử lý công việc trọng tâm trong ngày,2026-10-18,13:30,15:30,🌇 Buổi Chiều,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1107,Rà soát tiến độ & Hoàn thành checklist,2026-10-18,15:30,16:30,🌇 Buổi Chiều,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1108,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-18,16:30,17:30,🌇 Buổi Chiều,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1109,Uống 500ml nước ấm & Khởi động,2026-10-19,06:00,06:30,🌅 Buổi Sáng,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1110,Thể dục buổi sáng / Chạy bộ,2026-10-19,06:30,07:15,🌅 Buổi Sáng,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1111,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-19,07:15,08:00,🌅 Buổi Sáng,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1112,Xử lý công việc trọng tâm trong ngày,2026-10-19,13:30,15:30,🌇 Buổi Chiều,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1113,Rà soát tiến độ & Hoàn thành checklist,2026-10-19,15:30,16:30,🌇 Buổi Chiều,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1114,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-19,16:30,17:30,🌇 Buổi Chiều,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1115,Uống 500ml nước ấm & Khởi động,2026-10-20,06:00,06:30,🌅 Buổi Sáng,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1116,Thể dục buổi sáng / Chạy bộ,2026-10-20,06:30,07:15,🌅 Buổi Sáng,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1117,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-20,07:15,08:00,🌅 Buổi Sáng,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1118,Xử lý công việc trọng tâm trong ngày,2026-10-20,13:30,15:30,🌇 Buổi Chiều,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1119,Rà soát tiến độ & Hoàn thành checklist,2026-10-20,15:30,16:30,🌇 Buổi Chiều,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1120,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-20,16:30,17:30,🌇 Buổi Chiều,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1121,Uống 500ml nước ấm & Khởi động,2026-10-21,06:00,06:30,🌅 Buổi Sáng,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1122,Thể dục buổi sáng / Chạy bộ,2026-10-21,06:30,07:15,🌅 Buổi Sáng,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1123,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-21,07:15,08:00,🌅 Buổi Sáng,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1124,Xử lý công việc trọng tâm trong ngày,2026-10-21,13:30,15:30,🌇 Buổi Chiều,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1125,Rà soát tiến độ & Hoàn thành checklist,2026-10-21,15:30,16:30,🌇 Buổi Chiều,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1126,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-21,16:30,17:30,🌇 Buổi Chiều,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1127,Uống 500ml nước ấm & Khởi động,2026-10-22,06:00,06:30,🌅 Buổi Sáng,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1128,Thể dục buổi sáng / Chạy bộ,2026-10-22,06:30,07:15,🌅 Buổi Sáng,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1129,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-22,07:15,08:00,🌅 Buổi Sáng,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1130,Xử lý công việc trọng tâm trong ngày,2026-10-22,13:30,15:30,🌇 Buổi Chiều,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1131,Rà soát tiến độ & Hoàn thành checklist,2026-10-22,15:30,16:30,🌇 Buổi Chiều,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1132,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-22,16:30,17:30,🌇 Buổi Chiều,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1133,Uống 500ml nước ấm & Khởi động,2026-10-23,06:00,06:30,🌅 Buổi Sáng,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1134,Thể dục buổi sáng / Chạy bộ,2026-10-23,06:30,07:15,🌅 Buổi Sáng,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1135,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-23,07:15,08:00,🌅 Buổi Sáng,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1136,Xử lý công việc trọng tâm trong ngày,2026-10-23,13:30,15:30,🌇 Buổi Chiều,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1137,Rà soát tiến độ & Hoàn thành checklist,2026-10-23,15:30,16:30,🌇 Buổi Chiều,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1138,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-23,16:30,17:30,🌇 Buổi Chiều,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1139,Uống 500ml nước ấm & Khởi động,2026-10-24,06:00,06:30,🌅 Buổi Sáng,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1140,Thể dục buổi sáng / Chạy bộ,2026-10-24,06:30,07:15,🌅 Buổi Sáng,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1141,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-24,07:15,08:00,🌅 Buổi Sáng,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1142,Xử lý công việc trọng tâm trong ngày,2026-10-24,13:30,15:30,🌇 Buổi Chiều,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1143,Rà soát tiến độ & Hoàn thành checklist,2026-10-24,15:30,16:30,🌇 Buổi Chiều,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1144,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-24,16:30,17:30,🌇 Buổi Chiều,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1145,Uống 500ml nước ấm & Khởi động,2026-10-25,06:00,06:30,🌅 Buổi Sáng,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1146,Thể dục buổi sáng / Chạy bộ,2026-10-25,06:30,07:15,🌅 Buổi Sáng,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1147,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-25,07:15,08:00,🌅 Buổi Sáng,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1148,Xử lý công việc trọng tâm trong ngày,2026-10-25,13:30,15:30,🌇 Buổi Chiều,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1149,Rà soát tiến độ & Hoàn thành checklist,2026-10-25,15:30,16:30,🌇 Buổi Chiều,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1150,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-25,16:30,17:30,🌇 Buổi Chiều,Chủ Nhật,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1151,Uống 500ml nước ấm & Khởi động,2026-10-26,06:00,06:30,🌅 Buổi Sáng,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1152,Thể dục buổi sáng / Chạy bộ,2026-10-26,06:30,07:15,🌅 Buổi Sáng,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1153,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-26,07:15,08:00,🌅 Buổi Sáng,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1154,Xử lý công việc trọng tâm trong ngày,2026-10-26,13:30,15:30,🌇 Buổi Chiều,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1155,Rà soát tiến độ & Hoàn thành checklist,2026-10-26,15:30,16:30,🌇 Buổi Chiều,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1156,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-26,16:30,17:30,🌇 Buổi Chiều,Thứ 2,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1157,Uống 500ml nước ấm & Khởi động,2026-10-27,06:00,06:30,🌅 Buổi Sáng,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1158,Thể dục buổi sáng / Chạy bộ,2026-10-27,06:30,07:15,🌅 Buổi Sáng,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1159,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-27,07:15,08:00,🌅 Buổi Sáng,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1160,Xử lý công việc trọng tâm trong ngày,2026-10-27,13:30,15:30,🌇 Buổi Chiều,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1161,Rà soát tiến độ & Hoàn thành checklist,2026-10-27,15:30,16:30,🌇 Buổi Chiều,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1162,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-27,16:30,17:30,🌇 Buổi Chiều,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1163,Uống 500ml nước ấm & Khởi động,2026-10-28,06:00,06:30,🌅 Buổi Sáng,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1164,Thể dục buổi sáng / Chạy bộ,2026-10-28,06:30,07:15,🌅 Buổi Sáng,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1165,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-28,07:15,08:00,🌅 Buổi Sáng,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1166,Xử lý công việc trọng tâm trong ngày,2026-10-28,13:30,15:30,🌇 Buổi Chiều,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1167,Rà soát tiến độ & Hoàn thành checklist,2026-10-28,15:30,16:30,🌇 Buổi Chiều,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1168,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-28,16:30,17:30,🌇 Buổi Chiều,Thứ 4,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1169,Uống 500ml nước ấm & Khởi động,2026-10-29,06:00,06:30,🌅 Buổi Sáng,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1170,Thể dục buổi sáng / Chạy bộ,2026-10-29,06:30,07:15,🌅 Buổi Sáng,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1171,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-29,07:15,08:00,🌅 Buổi Sáng,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1172,Xử lý công việc trọng tâm trong ngày,2026-10-29,13:30,15:30,🌇 Buổi Chiều,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1173,Rà soát tiến độ & Hoàn thành checklist,2026-10-29,15:30,16:30,🌇 Buổi Chiều,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1174,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-29,16:30,17:30,🌇 Buổi Chiều,Thứ 5,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1175,Uống 500ml nước ấm & Khởi động,2026-10-30,06:00,06:30,🌅 Buổi Sáng,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1176,Thể dục buổi sáng / Chạy bộ,2026-10-30,06:30,07:15,🌅 Buổi Sáng,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1177,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-30,07:15,08:00,🌅 Buổi Sáng,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1178,Xử lý công việc trọng tâm trong ngày,2026-10-30,13:30,15:30,🌇 Buổi Chiều,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1179,Rà soát tiến độ & Hoàn thành checklist,2026-10-30,15:30,16:30,🌇 Buổi Chiều,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1180,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-30,16:30,17:30,🌇 Buổi Chiều,Thứ 6,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1181,Uống 500ml nước ấm & Khởi động,2026-10-31,06:00,06:30,🌅 Buổi Sáng,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Kích hoạt trao đổi chất ngày mới
+TASK_1182,Thể dục buổi sáng / Chạy bộ,2026-10-31,06:30,07:15,🌅 Buổi Sáng,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🧘 Sức khỏe,Duy trì năng lượng tích cực
+TASK_1183,Ăn sáng dinh dưỡng & Lập mục tiêu ngày,2026-10-31,07:15,08:00,🌅 Buổi Sáng,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,🏠 Cá nhân,Nạp năng lượng và định hình việc cần làm
+TASK_1184,Xử lý công việc trọng tâm trong ngày,2026-10-31,13:30,15:30,🌇 Buổi Chiều,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,💼 Công việc,Tập trung giải quyết nhiệm vụ chính
+TASK_1185,Rà soát tiến độ & Hoàn thành checklist,2026-10-31,15:30,16:30,🌇 Buổi Chiều,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đánh giá tỷ lệ hoàn thành công việc
+TASK_1186,Đọc sách / Nâng cao kỹ năng cá nhân,2026-10-31,16:30,17:30,🌇 Buổi Chiều,Thứ 7,⏳ Chưa hoàn thành,False,⭐⭐ Trung bình,📚 Học tập,Tích lũy kiến thức & thư giãn
+TASK_1187,Kiểm tra hệ thống Starnest Daily Web App,2026-10-06,08:00,09:00,🌅 Buổi Sáng,Thứ 3,⏳ Chưa hoàn thành,False,⭐⭐⭐ Cao,🎯 Kế hoạch,Đảm bảo đồng bộ 100% dữ liệu về Google Sheet

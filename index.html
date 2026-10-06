@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Lịch Lập Kế Hoạch Hàng Ngày - Starnest Style Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-pastel-pink">
+  <div class="planner-app">
+    
+    <!-- TOP HEADER -->
+    <header class="planner-header">
+      <div class="header-top">
+        <div class="brand-group">
+          <div class="app-icon-badge">
+            <span class="icon-emoji">🗓️</span>
+            <span class="sparkle">✨</span>
+          </div>
+          <div class="brand-text">
+            <h1 class="app-title">Lịch Lập Kế Hoạch</h1>
+            <span class="app-subtitle">Hàng Ngày • Starnest Planner</span>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <!-- Google Sheets Status Badge -->
+          <button class="btn-sync-gsheet" id="btnSyncGsheet" title="Đồng bộ với Google Sheet">
+            <span class="sync-dot"></span>
+            <span class="sync-icon">☁️</span>
+            <span class="sync-text">Lưu về Google Sheet</span>
+          </button>
+
+          <!-- Theme Picker Dropdown -->
+          <div class="theme-dropdown">
+            <button class="btn-theme-toggle" id="btnThemeToggle" title="Đổi giao diện">
+              🎨 <span class="theme-name">Giao diện</span>
+            </button>
+            <div class="theme-menu" id="themeMenu">
+              <div class="theme-opt active" data-theme="theme-pastel-pink">🎀 Hồng Pastel</div>
+              <div class="theme-opt" data-theme="theme-dark-kawaii">🌙 Dark Kawaii</div>
+              <div class="theme-opt" data-theme="theme-mint-fresh">🌿 Xanh Bạc Hà</div>
+              <div class="theme-opt" data-theme="theme-creamy-latte">☕ Latte Kem</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MONTH & YEAR NAVIGATION -->
+      <div class="month-nav-bar">
+        <div class="month-title-group">
+          <button class="nav-arrow" id="prevMonthBtn">◀</button>
+          <span class="current-month-label" id="currentMonthLabel">Tháng 10, 2026</span>
+          <button class="nav-arrow" id="nextMonthBtn">▶</button>
+        </div>
+        <button class="btn-today-badge" id="btnToday">🎯 Hôm nay</button>
+      </div>
+
+      <!-- CUTE HORIZONTAL DATE STRIP -->
+      <div class="date-strip-container">
+        <div class="date-strip" id="dateStrip">
+          <!-- Dynamically populated 31 days -->
+        </div>
+      </div>
+
+      <!-- MAIN TAB SWITCHER -->
+      <nav class="planner-tabs">
+        <button class="tab-btn active" data-tab="tab-daily">
+          <span class="tab-icon">📝</span> Kế hoạch ngày
+        </button>
+        <button class="tab-btn" data-tab="tab-month">
+          <span class="tab-icon">📅</span> Lịch tháng
+        </button>
+        <button class="tab-btn" data-tab="tab-habits">
+          <span class="tab-icon">💧</span> Thói quen & Mood
+        </button>
+      </nav>
+    </header>
+
+    <!-- MAIN BODY CONTENT -->
+    <main class="planner-main">
+      
+      <!-- TAB 1: DAILY ROUTINE (KẾ HOẠCH HÔM NAY) -->
+      <section class="tab-content active" id="tab-daily">
+        
+        <!-- DAILY HIGHLIGHT WIDGETS -->
+        <div class="widgets-row">
+          <!-- Progress Ring Widget -->
+          <div class="widget-card progress-widget">
+            <div class="progress-ring-box">
+              <svg class="progress-ring" width="70" height="70">
+                <circle class="ring-bg" stroke="#f0d5de" stroke-width="6" fill="transparent" r="28" cx="35" cy="35"/>
+                <circle class="ring-fill" id="progressRingFill" stroke="url(#pinkGradient)" stroke-width="6" stroke-linecap="round" fill="transparent" r="28" cx="35" cy="35"/>
+                <defs>
+                  <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF758F"/>
+                    <stop offset="100%" stop-color="#FF4D6D"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="ring-text" id="progressPercent">0%</div>
+            </div>
+            <div class="widget-meta">
+              <h4 id="widgetDateTitle">Thứ 2, 05/10/2026</h4>
+              <p class="widget-quote" id="widgetQuote">Tập trung hoàn thành mục tiêu ngày nhé! 🌟</p>
+              <div class="task-stats-badge">
+                <span id="statCompleted">0</span>/<span id="statTotal">6</span> việc đã làm
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Mood Tracker Widget -->
+          <div class="widget-card mood-widget">
+            <div class="widget-header-sm">
+              <span>Cảm xúc hôm nay</span>
+              <span class="sparkle">✨</span>
+            </div>
+            <div class="mood-selector">
+              <button class="mood-btn" data-mood="happy" title="Tuyệt vời">🥰</button>
+              <button class="mood-btn active" data-mood="good" title="Vui vẻ">😊</button>
+              <button class="mood-btn" data-mood="calm" title="Bình yên">😌</button>
+              <button class="mood-btn" data-mood="tired" title="Mệt mỏi">😴</button>
+              <button class="mood-btn" data-mood="sad" title="Buồn rầu">🌧️</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROUTINE SESSIONS (SÁNG - CHIỀU - TỐI) -->
+        <div class="sessions-container">
+          
+          <!-- BUỔI SÁNG -->
+          <div class="session-block morning-block">
+            <div class="session-header">
+              <div class="session-title">
+                <span class="session-badge morning">🌅 Buổi Sáng</span>
+                <span class="session-time-hint">06:00 - 12:00</span>
+              </div>
+              <span class="session-count" id="countMorning">3 việc</span>
+            </div>
+            <div class="tasks-list" id="listMorning">
+              <!-- Render morning tasks -->
+            </div>
+          </div>
+
+          <!-- BUỔI CHIỀU -->
+          <div class="session-block afternoon-block">
+            <div class="session-header">
+              <div class="session-title">
+                <span class="session-badge afternoon">🌇 Buổi Chiều</span>
+                <span class="session-time-hint">13:30 - 18:00</span>
+              </div>
+              <span class="session-count" id="countAfternoon">3 việc</span>
+            </div>
+            <div class="tasks-list" id="listAfternoon">
+              <!-- Render afternoon tasks -->
+            </div>
+          </div>
+
+          <!-- BUỔI TỐI -->
+          <div class="session-block evening-block">
+            <div class="session-header">
+              <div class="session-title">
+                <span class="session-badge evening">🌙 Buổi Tối</span>
+                <span class="session-time-hint">18:30 - 22:30</span>
+              </div>
+              <span class="session-count" id="countEvening">0 việc</span>
+            </div>
+            <div class="tasks-list" id="listEvening">
+              <!-- Render evening tasks -->
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- TAB 2: CUTE MONTH CALENDAR (LỊCH THÁNG) -->
+      <section class="tab-content" id="tab-month">
+        <div class="month-calendar-card">
+          <div class="calendar-legend">
+            <span>💖 Đầy đủ việc</span>
+            <span>⭐ Đang tiến hành</span>
+            <span>✓ Đã hoàn thành</span>
+          </div>
+          <div class="calendar-grid-header">
+            <span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span>
+          </div>
+          <div class="calendar-days-grid" id="calendarDaysGrid">
+            <!-- Render 31 days grid -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: HABITS & MOOD TRACKER -->
+      <section class="tab-content" id="tab-habits">
+        <div class="habits-card">
+          <h3>💧 Thói Quen Nhỏ Mỗi Ngày</h3>
+          <p class="section-desc">Duy trì đều đặn để tạo thói quen tốt</p>
+          
+          <div class="habit-item">
+            <div class="habit-icon">💧</div>
+            <div class="habit-info">
+              <h4>Uống 2 Lít Nước</h4>
+              <p>Mục tiêu: 8 ly nước mỗi ngày</p>
+              <div class="water-cups" id="waterCups">
+                <span class="cup active">🥛</span>
+                <span class="cup active">🥛</span>
+                <span class="cup active">🥛</span>
+                <span class="cup active">🥛</span>
+                <span class="cup">🥛</span>
+                <span class="cup">🥛</span>
+                <span class="cup">🥛</span>
+                <span class="cup">🥛</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="habit-item">
+            <div class="habit-icon">🏃</div>
+            <div class="habit-info">
+              <h4>Thể Dục / Chạy Bộ</h4>
+              <p>30 phút vận động tích cực</p>
+              <div class="habit-streak">🔥 Chuỗi 5 ngày liên tiếp</div>
+            </div>
+          </div>
+
+          <div class="habit-item">
+            <div class="habit-icon">📖</div>
+            <div class="habit-info">
+              <h4>Đọc Sách Phát Triển</h4>
+              <p>20 trang sách trước khi ngủ</p>
+              <div class="habit-streak">📚 Đã đọc 45 phút</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FLOATING ACTION BUTTON (+) -->
+    <button class="fab-add-task" id="fabAddTask" title="Thêm công việc mới">
+      <span class="fab-icon">+</span>
+      <span class="fab-pulse"></span>
+    </button>
+
+    <!-- MODAL: THÊM CÔNG VIỆC MỚI -->
+    <div class="modal-backdrop" id="modalBackdrop">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title-box">
+            <span class="modal-badge-icon">🌸</span>
+            <h3>Thêm Kế Hoạch Mới</h3>
+          </div>
+          <button class="btn-close-modal" id="btnCloseModal">✕</button>
+        </div>
+        
+        <form id="addPlanForm" class="modal-form">
+          <div class="form-group">
+            <label>Tên công việc / Kế hoạch *</label>
+            <input type="text" id="inpTitle" placeholder="Ví dụ: Uống nước ấm & Khởi động..." required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-half">
+              <label>Ngày thực hiện</label>
+              <input type="date" id="inpDate" value="2026-10-06" required>
+            </div>
+            <div class="form-group col-half">
+              <label>Buổi trong ngày</label>
+              <select id="inpSession">
+                <option value="🌅 Buổi Sáng">🌅 Buổi Sáng</option>
+                <option value="🌇 Buổi Chiều">🌇 Buổi Chiều</option>
+                <option value="🌙 Buổi Tối">🌙 Buổi Tối</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-half">
+              <label>Bắt đầu</label>
+              <input type="time" id="inpStartTime" value="08:00">
+            </div>
+            <div class="form-group col-half">
+              <label>Kết thúc</label>
+              <input type="time" id="inpEndTime" value="09:00">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-half">
+              <label>Mức ưu tiên</label>
+              <select id="inpPriority">
+                <option value="⭐⭐⭐ Cao">⭐⭐⭐ Cao</option>
+                <option value="⭐⭐ Trung bình">⭐⭐ Trung bình</option>
+                <option value="⭐ Thấp">⭐ Thấp</option>
+              </select>
+            </div>
+            <div class="form-group col-half">
+              <label>Danh mục</label>
+              <select id="inpCategory">
+                <option value="🧘 Sức khỏe">🧘 Sức khỏe</option>
+                <option value="💼 Công việc">💼 Công việc</option>
+                <option value="🎯 Kế hoạch">🎯 Kế hoạch</option>
+                <option value="📚 Học tập">📚 Học tập</option>
+                <option value="🏠 Cá nhân">🏠 Cá nhân</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Ghi chú thêm</label>
+            <input type="text" id="inpNotes" placeholder="Nhắc nhở hoặc lời dặn cho bản thân...">
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn-cancel" id="btnCancelModal">Hủy bỏ</button>
+            <button type="submit" class="btn-submit">💖 Lưu Kế Hoạch</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast-popup" id="toastPopup">
+      <span class="toast-icon">✨</span>
+      <span class="toast-message" id="toastMessage">Đã lưu thành công!</span>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
